@@ -1,7 +1,7 @@
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-public class LevelFinisher : MonoBehaviour
+public class LevelFinisher : SceneOpener
 {
     private void OnTriggerEnter2D(Collider2D other)
     {

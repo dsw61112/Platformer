@@ -10,6 +10,7 @@ public class PlayerMotor : MonoBehaviour
     public float maxSpeedX = 10;
     public float stoppingPoint = 0.1f;
     public float enemyHitForce = 50;
+    public float jumpForce = 10;
     private Rigidbody2D _rigidbody2D;
     private bool _canJump = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,11 +28,11 @@ public class PlayerMotor : MonoBehaviour
     private void LimitMaxSpeed()
     {
         //Limit max speed
-        if (Rigidbody2D.linearVelocityX >= maxSpeedX)
+        if (_rigidbody2D.linearVelocityX >= maxSpeedX)
         {
             _rigidbody2D.linearVelocityX = maxSpeedX;
         }
-        else if (Rigidbody2D.linearVelocityX <= maxSpeedX)
+        else if (_rigidbody2D.linearVelocityX <= maxSpeedX)
         {
             _rigidbody2D.linearVelocityX = -maxSpeedX;
         }
@@ -50,7 +51,7 @@ public class PlayerMotor : MonoBehaviour
             //if almost stopped, force stop
             if (_rigidbody2D.linearVelocityX < stoppingPoint && _rigidbody2D.linearVelocityX > -stoppingPoint)
             {
-                _rigidbody2D.linearVelocityX = new Vector2(0.0f, _rigidbody2D.linearVelocityY);
+                _rigidbody2D.linearVelocityX = 0;
             }
             //add stopping force
             else
