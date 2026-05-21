@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8474538932698220689}
   - component: {fileID: 6329201232875418189}
   - component: {fileID: 8381229915032806568}
+  - component: {fileID: 7134422118116574420}
   m_Layer: 5
   m_Name: HealthPanel
   m_TagString: Untagged
@@ -76,6 +77,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7134422118116574420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743521429839032618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f9700b803e2fc4d9726408e566b3ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthComponent: {fileID: 0}
+  textComponent: {fileID: 0}
 --- !u!1 &4860271506111575958
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +238,7 @@ GameObject:
   - component: {fileID: 3330525252756508288}
   - component: {fileID: 2123566680423252077}
   - component: {fileID: 7392156206296552891}
+  - component: {fileID: 5294755927736011471}
   m_Layer: 5
   m_Name: CoinPanel
   m_TagString: Untagged
@@ -288,6 +304,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5294755927736011471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5261125343405888221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a30bb8dac956e40ad9fef42b93dacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  coinComp: {fileID: 0}
 --- !u!1 &5352577844281289951
 GameObject:
   m_ObjectHideFlags: 0
