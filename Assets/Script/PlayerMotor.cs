@@ -16,6 +16,8 @@ public class PlayerMotor : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private bool _canJump = true;
     private bool _canDash = true;
+    public int maxJump = 2;
+    private int currentJumps;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -100,12 +102,17 @@ public class PlayerMotor : MonoBehaviour
     private void OnJump()
     {
         _rigidbody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        _canJump = false;
+        currentJumps++;
+        if (currentJumps >= maxJump)
+        {
+            _canJump = false;
+        }
     }
 
     void OnCollisionEnder2D(Collision2D collision)
     {
         _canJump = true;
+        currentJumps = 0;
     }
 
     private void OnHealthChanged(int oldHealth, int amountChanged, Vector2 origin)
