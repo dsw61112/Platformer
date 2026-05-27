@@ -1,19 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class Teleporter : MonoBehaviour
 {
-    public Teleporter teleport;
+    public Transform position;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        teleport.gameObject.SetActive(false);
-        collision.transform.position = teleport.transform.position;
-        StartCoroutine(TeleportPlayer(1.0f));
-    }
-
-    IEnumerator TeleportPlayer(float timeToTeleport)
-    {
-        yield return new WaitForSeconds(timeToTeleport);
-        teleport.gameObject.SetActive(true);
+        collision.transform.position = position.position;
     }
 }

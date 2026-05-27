@@ -15,9 +15,9 @@ public class Spike : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        other.GetComponent<HealthComponent>().RecieveDamage(damage);
+        collision.GetComponent<HealthComponent>().RecieveDamage(damage, this.gameObject);
     }
 }
     

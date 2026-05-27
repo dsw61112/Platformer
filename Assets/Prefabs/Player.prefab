@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8483186600769160581}
   - component: {fileID: 1006984058455750825}
   - component: {fileID: 6704473151544376262}
+  - component: {fileID: 2775340701969998443}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -34,7 +35,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.56, y: -3.7, z: 0}
-  m_LocalScale: {x: 0.5656, y: 0.5439, z: 1}
+  m_LocalScale: {x: 3.2795172, y: 3.24513, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,9 +83,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.7264151, g: 0.14048593, b: 0.14048593, a: 1}
+  m_SortingOrder: 6
+  m_Sprite: {fileID: -6367560908665664636, guid: 40de9a8703e2e5a47882b0b86451c741, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -138,11 +139,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 10
   stoppingForce: 10
-  maxSpeedX: 10
+  maxSpeedX: 5
   stoppingPoint: 0.1
   enemyHitForce: 50
   jumpForce: 10
   dashForce: 10
+  maxJump: 2
 --- !u!50 &3282206011312016554
 Rigidbody2D:
   serializedVersion: 5
@@ -208,13 +210,13 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.26, y: 0.32}
   m_EdgeRadius: 0
 --- !u!114 &8483186600769160581
 MonoBehaviour:
@@ -228,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52902ef8c7d1d8a4b8df6d77b9372dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1
 --- !u!114 &1006984058455750825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,3 +256,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToOpen: 
+--- !u!95 &2775340701969998443
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308578504843671391}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba6fc8a6a5fcf7e43b31214061319b4e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

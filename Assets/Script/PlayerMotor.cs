@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEditor.Experimental.GraphView;
-    using UnityEngine;
-    using UnityEngine.InputSystem;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using Vector3 = UnityEngine.Vector3;
 
 public class PlayerMotor : MonoBehaviour
 {
@@ -18,18 +19,37 @@ public class PlayerMotor : MonoBehaviour
     private bool _canDash = true;
     public int maxJump = 2;
     private int currentJumps;
+    private Animator animator;
+    private float initScale;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        initScale = transform.localScale.x;
     }
     // Update is called once per frame
     private void FixedUpdate()
     {
+
+        animator.SetFloat("SpeedY", _rigidbody2D.linearVelocityY);
+        if (direction.x > 0)
+        {
+            transform.localScale = new Vector3(initScale, transform.localScale.y, transform.localScale.x);
+        }
+        else if (direction.x < 0)
+        {
+            transform.localScale = new Vector3(-initScale, transform.localScale.y, transform.localScale.x);
+        }
         MovePlayer();
         LimitMaxSpeed();
     }
 
+    private void Update()
+    {
+        Debug.Log(direction);   
+    }
     private void LimitMaxSpeed()
     {
         //Limit max speed
@@ -41,10 +61,28 @@ public class PlayerMotor : MonoBehaviour
         {
             _rigidbody2D.linearVelocityX = maxSpeedX;
         }
-        else if (_rigidbody2D.linearVelocityX <= maxSpeedX)
+        else if (_rigidbody2D.linearVelocityX <= -maxSpeedX)
         {
             _rigidbody2D.linearVelocityX = -maxSpeedX;
         }
+    }
+
+    private void StoppingForce()
+    {
+        if (direction.x !=0)
+        {
+            _rigidbody2D.AddForce(new Vector2(direction.x * stoppingForce, 0));
+            animator.SetBool("isMoving", true);
+        }
+        else if (_rigidbody2D.linearVelocityX != 0)
+        {
+            _rigidbody2D.AddForce(new Vector2(-_rigidbody2D.linearVelocityX * stoppingForce, 0));
+        }
+        if (direction.x == 0)
+        {
+            animator.SetBool("Is Moving", false);
+        }
+
     }
 
     private void MovePlayer()

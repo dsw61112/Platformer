@@ -19,6 +19,6 @@ public class UI_CoinDisplay : MonoBehaviour
 
     private void CoinComp_OnCoinChanged(int amount, int changedAmount)
     {
-        text.text += amount.ToString();
+        text.text = amount.ToString();
     }
 }

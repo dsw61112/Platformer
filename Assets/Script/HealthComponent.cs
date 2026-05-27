@@ -24,8 +24,9 @@ public class HealthComponent : MonoBehaviour
     }
 
 
-    public void RecieveDamage(float amount)
+    public void RecieveDamage(float amount, GameObject go)
     {
+        Debug.Log(go);
         if (!invincibility)
         {
             currentHealth -= amount;
