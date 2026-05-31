@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,14 +21,14 @@ public class PlayerMotor : MonoBehaviour
     public int maxJump = 2;
     private int currentJumps;
     private Animator animator;
-    private float initScale;
+    private float initialScale;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        initScale = transform.localScale.x;
+        initialScale = transform.localScale.x;
     }
     // Update is called once per frame
     private void FixedUpdate()
@@ -36,11 +37,11 @@ public class PlayerMotor : MonoBehaviour
         animator.SetFloat("SpeedY", _rigidbody2D.linearVelocityY);
         if (direction.x > 0)
         {
-            transform.localScale = new Vector3(initScale, transform.localScale.y, transform.localScale.x);
+            transform.localScale = new Vector3(initialScale, transform.localScale.y, transform.localScale.x);
         }
         else if (direction.x < 0)
         {
-            transform.localScale = new Vector3(-initScale, transform.localScale.y, transform.localScale.x);
+            transform.localScale = new Vector3(-initialScale, transform.localScale.y, transform.localScale.x);
         }
         MovePlayer();
         LimitMaxSpeed();
@@ -67,30 +68,21 @@ public class PlayerMotor : MonoBehaviour
         }
     }
 
-    private void StoppingForce()
-    {
-        if (direction.x !=0)
-        {
-            _rigidbody2D.AddForce(new Vector2(direction.x * stoppingForce, 0));
-            animator.SetBool("isMoving", true);
-        }
-        else if (_rigidbody2D.linearVelocityX != 0)
-        {
-            _rigidbody2D.AddForce(new Vector2(-_rigidbody2D.linearVelocityX * stoppingForce, 0));
-        }
-        if (direction.x == 0)
-        {
-            animator.SetBool("Is Moving", false);
-        }
-
-    }
-
     private void MovePlayer()
     {
         //accelerate if pressing button
         if (direction.x != 0)
         {
             _rigidbody2D.AddForce(new Vector2(direction.x * acceleration, 0));
+            animator.SetBool("IsMoving", true);
+            if (direction.x > 0)
+            {
+                gameObject.transform.localScale = new Vector3(initialScale, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+            }
+            else
+            {
+                gameObject.transform.localScale = new Vector3(-initialScale, gameObject.transform.localScale.y, gameObject.transform.localScale.z);
+            }
         }
         // if not accelerating start slowing down
         else if (_rigidbody2D.linearVelocityX != 0)
@@ -98,13 +90,14 @@ public class PlayerMotor : MonoBehaviour
             //if almost stopped, force stop
             if (_rigidbody2D.linearVelocityX < stoppingPoint && _rigidbody2D.linearVelocityX > -stoppingPoint)
             {
-                _rigidbody2D.linearVelocityX = 0;
+                _rigidbody2D.linearVelocity = new Vector2(0.0f, _rigidbody2D.linearVelocityY);
             }
             //add stopping force
             else
             {
                 _rigidbody2D.AddForce(new Vector2(-_rigidbody2D.linearVelocityX * stoppingForce, 0));
             }
+            animator.SetBool("IsMoving", false );   
         }
     }
 
