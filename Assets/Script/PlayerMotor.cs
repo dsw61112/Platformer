@@ -33,16 +33,6 @@ public class PlayerMotor : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-
-        animator.SetFloat("SpeedY", _rigidbody2D.linearVelocityY);
-        if (direction.x > 0)
-        {
-            transform.localScale = new Vector3(initialScale, transform.localScale.y, transform.localScale.x);
-        }
-        else if (direction.x < 0)
-        {
-            transform.localScale = new Vector3(-initialScale, transform.localScale.y, transform.localScale.x);
-        }
         MovePlayer();
         LimitMaxSpeed();
     }

@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 1308578504843671391}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.56, y: -3.7, z: 0}
+  m_LocalPosition: {x: -8.14, y: -3.4145, z: 0}
   m_LocalScale: {x: 3.2795172, y: 3.24513, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -138,12 +138,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 10
-  stoppingForce: 10
+  stoppingForce: 0.1
   maxSpeedX: 5
-  stoppingPoint: 0.1
+  stoppingPoint: 0
   enemyHitForce: 50
-  jumpForce: 10
-  dashForce: 10
+  jumpForce: 8
+  dashForce: 3
   maxJump: 2
 --- !u!50 &3282206011312016554
 Rigidbody2D:
@@ -160,7 +160,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -171,7 +171,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &5555143809426867569
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03a5407042a2b74582cc60b7c519d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToOpen: 
+  sceneToOpen: End Scene
 --- !u!95 &2775340701969998443
 Animator:
   serializedVersion: 7

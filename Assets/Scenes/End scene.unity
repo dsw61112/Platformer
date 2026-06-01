@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03a5407042a2b74582cc60b7c519d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToOpen: Main scene
+  sceneToOpen: Level 1
 --- !u!114 &1015022106
 MonoBehaviour:
   m_ObjectHideFlags: 0
