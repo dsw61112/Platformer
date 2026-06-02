@@ -21,7 +21,7 @@ public class CoinComponent : MonoBehaviour
 
     public void AddPoints(int amount)
     {
-        points = amount;
+        points += amount;
         OnCoinChanged?.Invoke(points, amount);
         //Debug.Log(points);
     }
